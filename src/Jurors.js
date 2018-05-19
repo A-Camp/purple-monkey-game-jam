@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class Jurors extends Component {
-
-  fuckOff = () => {
-    console.log("clicked")
-    this.props.wasBlackmailedCallback("Paul")
+  fuckOff = (juror) => {
+    const notAccusedYet = !this.props.blackmailed.includes(juror)
+    const blackmailAvailable = this.props.blackmailed.length < this.props.blackmailsLeft
+    if (notAccusedYet && blackmailAvailable) {
+      this.props.wasBlackmailedCallback(juror)
+    }
   }
 
-  questionForMe = () => {
-    console.log("question")
-    this.props.askedQuestionCallback()
+  questionForMe = (juror) => {
+    this.props.questioningCallback(juror)
   }
 
   render() {
     return (
       <div>
-      <h1>{this.props.text}</h1>
-      <p onClick={this.fuckOff}>I am the juror Paul!
-      </p>
-      <p onClick={this.questionForMe}>"Ask Paul a question!"</p>
+        <div className="jury-box">
+          {this.props.jurors.map((juror, i) => (
+            <div key={`juror-${i}`}>
+              <div>{juror.name}</div>
+              <button onClick={() => this.questionForMe(juror)}>Ask Questions</button>
+              <button onClick={() => this.fuckOff(juror)}>Blackmail!</button>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
