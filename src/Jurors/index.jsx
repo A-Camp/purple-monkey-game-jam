@@ -25,8 +25,18 @@ class Jurors extends Component {
     this.setState({ accuseModalIsOpen: false, wantsToAccuseJuror: null })
   }
 
+  notAccusedYet = (accusation) => {
+    let notAccusedYet = true;
+    this.props.blackmailed.forEach(accused => {
+      if (accused.juror.name === accusation.juror.name) {
+        notAccusedYet = false;
+      }
+    })
+    return notAccusedYet
+  }
+
   fuckOff = (accusation) => {
-    const notAccusedYet = !this.props.blackmailed.includes(accusation)
+    const notAccusedYet = this.notAccusedYet(accusation)
     const blackmailAvailable = this.props.blackmailed.length < this.props.blackmailsLeft
     if (notAccusedYet && blackmailAvailable) {
       this.props.wasBlackmailedCallback(accusation)
@@ -59,23 +69,36 @@ class Jurors extends Component {
       <div className="modalText">
         {this.state.wantsToAccuseJuror && (
           <div>
-            <div>What do you want to blackmail {this.state.wantsToAccuseJuror.name} with?</div>
-            {this.props.blackmailReasons.map((blackmail, i) => (
+            { this.notAccusedYet({ juror: this.state.wantsToAccuseJuror }) && (
               <div>
-                { (this.clickableBlackmail(blackmail)) && (
-                  <div onClick={() => this.accuseJuror(blackmail)} key={i} className="clickableBlackmail">
-                    <p>{blackmail.text}</p>
-                  </div>
-                )}
+              <div>What do you want to blackmail {this.state.wantsToAccuseJuror.name} with?</div>
+              {this.props.blackmailReasons.map((blackmail, i) => (
+                <div>
+                  { (this.clickableBlackmail(blackmail)) && (
+                    <div onClick={() => this.accuseJuror(blackmail)} key={i} className="clickableBlackmail">
+                      <p>{blackmail.text}</p>
+                    </div>
+                  )}
 
-                { !(this.clickableBlackmail(blackmail)) && (
-                  <div key={i} className="nonClickableBlackmail">
-                    <p>{blackmail.text}</p>
+                  { !(this.clickableBlackmail(blackmail)) && (
+                    <div key={i} className="nonClickableBlackmail">
+                      <p>{blackmail.text}</p>
+                    </div>
+                  )}
                   </div>
-                )}
-                </div>
-              ))}
-              <button onClick={() => this.closeAccuseModal()}>Nevermind</button>
+                ))}
+                <button onClick={() => this.closeAccuseModal()}>Nevermind</button>
+              </div>
+            )}
+
+            { !(this.notAccusedYet({ juror: this.state.wantsToAccuseJuror })) && (
+              <div>
+                <div>"You've already accused this juror!"</div>
+                <button onClick={() => this.closeAccuseModal()}>Oops! Nevermind.</button>
+              </div>
+            )}
+
+
           </div>
         )}
       </div>
