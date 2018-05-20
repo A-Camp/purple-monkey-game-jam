@@ -16,6 +16,8 @@ class App extends Component {
       {number: 4, text: "What is your relationship status?"}
     ]
 
+    const jurorsWithPics = this.randomJurorPics()
+
     let blackmails = this.selectBlackmail(jurorData.slice(), 3);
     this.state = {
       blackmailed: [],
@@ -23,13 +25,36 @@ class App extends Component {
       blackmails: [],
       questionsLeft: 20,
       currentlyQuestioning: null,
-      jurors: jurorData,
+      jurors: jurorsWithPics,
       blackmails: blackmails,
       questions: questions,
       modalIsOpen: true,
       gameEndModalIsOpen: false,
       endText: "",
     };
+  }
+
+  randomJurorPics = () => {
+    const jurorNums = this.shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+    const randomJurors = this.shuffle(jurorData)
+    return randomJurors.map((juror, i) => {
+      return juror = {...juror, picture: `/images/juror-${jurorNums[i]}.png`}
+    })
+  }
+
+  shuffle = (array) => {
+    var i = 0
+    , j = 0
+    , temp = null
+
+    for (i = array.length - 1; i > 0; i -= 1) {
+      j = Math.floor(Math.random() * (i + 1))
+      temp = array[i]
+      array[i] = array[j]
+      array[j] = temp
+    }
+
+    return array
   }
 
   closeModal = () => {
@@ -114,7 +139,6 @@ class App extends Component {
   }
 
   styleQuestions = () => {
-    console.log("styleQuestions")
     return this.state.questionsLeft <= 5 ? "lowQuestions" : "noLowQuestions"
   }
 
@@ -122,67 +146,67 @@ class App extends Component {
     return (
       <div className="app">
 
-        <Modal
-        isOpen={this.state.modalIsOpen}
-        className="modal"
-        >
-          <p className="modalText">
-            Well, it's hopeless. Your client is definitely going to be found guilty. However, as a great defense attorney, you've never let a little thing like evidence get in your way.
-          </p>
-          <p className="modalText">
-            Lucky for you, your client isn't the only scumbag in the courtroom. You've gotten the dirt on several jurors and you're going to blackmail your way into a "not guilty" verdict.
-            Unfortunately for you, you don't know which juror each incriminating fact belongs to.
-          </p>
-          <p className="modalText">
-            You can read the intel you've gathered and then question each juror to figure out whose dirty deeds you can use to your client's advantage. Once you think you know who to blackmail, start throwing out accusations. Now get in there and rig that jury!
-          </p>
-          <button onClick={this.closeModal} className="button">START</button>
-        </Modal>
+      <Modal
+      isOpen={this.state.modalIsOpen}
+      className="modal"
+      >
+      <p className="modalText">
+      Well, it's hopeless. Your client is definitely going to be found guilty. However, as a great defense attorney, you've never let a little thing like evidence get in your way.
+      </p>
+      <p className="modalText">
+      Lucky for you, your client isn't the only scumbag in the courtroom. You've gotten the dirt on several jurors and you're going to blackmail your way into a "not guilty" verdict.
+      Unfortunately for you, you don't know which juror each incriminating fact belongs to.
+      </p>
+      <p className="modalText">
+      You can read the intel you've gathered and then question each juror to figure out whose dirty deeds you can use to your client's advantage. Once you think you know who to blackmail, start throwing out accusations. Now get in there and rig that jury!
+      </p>
+      <button onClick={this.closeModal} className="button">START</button>
+      </Modal>
 
-        <Modal
-        isOpen={this.state.gameEndModalIsOpen}
-        className="modal"
-        >
-          <p className="modalText">
-            {this.state.endText}
-          </p>
-          <button onClick={this.newGame} className="button">NEW Game</button>
-        </Modal>
+      <Modal
+      isOpen={this.state.gameEndModalIsOpen}
+      className="modal"
+      >
+      <p className="modalText">
+      {this.state.endText}
+      </p>
+      <button onClick={this.newGame} className="button">NEW Game</button>
+      </Modal>
 
-        <Jurors
-        wasBlackmailedCallback={this.wasBlackmailedCallback}
-        questioningCallback={this.questioningCallback}
-        currentlyQuestioning={this.state.currentlyQuestioning}
-        blackmailed={this.state.blackmailed}
-        blackmailsLeft={this.state.blackmailsLeft}
-        jurors={this.state.jurors}
-        />
+      <Jurors
+      wasBlackmailedCallback={this.wasBlackmailedCallback}
+      questioningCallback={this.questioningCallback}
+      currentlyQuestioning={this.state.currentlyQuestioning}
+      blackmailed={this.state.blackmailed}
+      blackmailsLeft={this.state.blackmailsLeft}
+      jurors={this.state.jurors}
+      />
 
-        <div className="bottom">
+      <div className="bottom">
 
-          <div className="gameState">
-            <div className="numQuestions">Number of questions left: <span className={this.styleQuestions()}>{this.state.questionsLeft}</span></div>
+      <div className="gameState">
+      <div className="numQuestions">Number of questions left: <span className={this.styleQuestions()}>{this.state.questionsLeft}</span></div>
 
-            {this.state.questionsLeft <= 0 && (
-              <div>YOU ARE OUT OF QUESTIONS. PLEASE PICK WHO TO BLACKMAIL</div>
-            )}
+      {this.state.questionsLeft <= 0 && (
+        <div>YOU ARE OUT OF QUESTIONS. PLEASE PICK WHO TO BLACKMAIL</div>
+      )}
 
-            <Blackmail
-            blackmailing={this.state.blackmailed}
-            blackmails={this.state.blackmails}
-            removeBlackmailAccusation={this.removeBlackmailAccusation}
-            checkWin={this.checkWin}
-            />
-          </div>
+      <Blackmail
+      blackmailing={this.state.blackmailed}
+      blackmails={this.state.blackmails}
+      removeBlackmailAccusation={this.removeBlackmailAccusation}
+      checkWin={this.checkWin}
+      />
+      </div>
 
-          <div className="jurorCard">
-            {this.state.currentlyQuestioningName && (
-              <Questioning juror={this.currentlyQuestioningJuror()}
-              answerQuestionCallback={this.answerQuestionCallback}
-              questions={this.state.questions}/>
-            )}
-          </div>
-        </div>
+      <div className="jurorCard">
+      {this.state.currentlyQuestioningName && (
+        <Questioning juror={this.currentlyQuestioningJuror()}
+        answerQuestionCallback={this.answerQuestionCallback}
+        questions={this.state.questions}/>
+      )}
+      </div>
+      </div>
       </div>
     );
   }
