@@ -158,7 +158,7 @@ class App extends Component {
       className="modal"
       >
       <p className="modalText">
-        <b>Clarrisa Extorts It All</b>
+        <b>RIG THAT JURY</b>
       </p>
       <p className="modalText">
       Well, it's hopeless. Your client is definitely going to be found guilty. However, as a great defense attorney, you've never let a little thing like evidence get in your way.
