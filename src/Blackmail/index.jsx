@@ -20,7 +20,9 @@ class Blackmail extends Component {
         <div>
         <p>Your blackmail clues are</p>
         </div>
-
+        {this.props.blackmails.map((blackmail, i) => (
+          <div key={`blackmail-number-${i}`}>{blackmail.text}</div>
+        ))}
 
         {this.props.blackmailing.length > 0 && (
           <div>
