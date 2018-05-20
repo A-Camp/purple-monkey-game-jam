@@ -41,7 +41,7 @@ button {
   border: 10px double black;
   color: #40434E;
   background-color: #FBFBF2;
-  height: 300px;
+  height: auto;
 }
 
 .jurorCard {
