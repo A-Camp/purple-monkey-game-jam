@@ -25,8 +25,8 @@ class Jurors extends Component {
             <span key={`juror-${i}`} className="juror">
               <img src={juror.picture} className="jurorPic"/>
               <div>{juror.name}</div>
-              <div><button onClick={() => this.questionForMe(juror)} className="button">Question</button></div>
-              <div><button onClick={() => this.fuckOff(juror)} className="button">Blackmail</button></div>
+              <div className="jurorButton"><button onClick={() => this.questionForMe(juror)}>Question</button></div>
+              <div className="jurorButton"><button onClick={() => this.fuckOff(juror)}>Blackmail</button></div>
             </span>
           ))}
           </div>

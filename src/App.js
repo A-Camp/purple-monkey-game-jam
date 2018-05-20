@@ -33,6 +33,8 @@ class App extends Component {
   }
 
   closeModal = () => {
+    var audio = new Audio('/distortedLawNOrder.mp3');
+    audio.play();
     this.setState({modalIsOpen: false});
   }
 
