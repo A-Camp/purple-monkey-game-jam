@@ -78,8 +78,6 @@ class App extends Component {
     let winner = true;
 
     this.state.blackmailed.forEach(accusation => {
-      console.log(accusation.juror.name)
-      console.log(accusation.blackmail.jurorName)
       if (!(accusation.juror.name === accusation.blackmail.jurorName)) {
         winner = false
       }
@@ -179,7 +177,7 @@ class App extends Component {
       <p className="modalText">
       {this.state.endText}
       </p>
-      <button onClick={this.newGame} className="button">NEW Game</button>
+      <button onClick={this.newGame} className="button">NEW GAME</button>
       </Modal>
 
       <Jurors
