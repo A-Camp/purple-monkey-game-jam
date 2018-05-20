@@ -1,0 +1,18 @@
+.app {
+  text-align: center;
+}
+
+.bottom {
+  display: flex;
+  margin: 0 20px;
+}
+
+.gameState {
+  min-width: 300px;
+  margin-right: 30px;
+}
+
+.jurorCard {
+  width: 100%;
+  border: 1px solid black;
+}

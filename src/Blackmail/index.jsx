@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './blackmail.css'
 
 class Blackmail extends Component {
   constructor(props) {
@@ -15,7 +16,12 @@ class Blackmail extends Component {
     const { text } = this.state
 
     return (
-      <div>
+      <div className="root">
+        <div>
+        <p>Your blackmail clues are</p>
+        </div>
+
+
         {this.props.blackmailing.length > 0 && (
           <div>
             <div>{text.blackmails}</div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './styles.css';
+import './app.css';
 import Jurors from './Jurors'
 import Questioning from './Questioning'
 import Blackmail from './Blackmail'
@@ -118,7 +118,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <p>
           Well, it's hopeless. Your client is definitely going to be found guilty. However, as a great defense attorney, you've never let a little thing like evidence get in your way.
           Lucky for you, your client isn't the only scumbag in the courtroom. You've gotten the dirt on several jurors and you're going to blackmail your way into a "not guilty" verdict.
@@ -136,19 +136,26 @@ class App extends Component {
         jurors={this.state.jurors}
         />
 
-        {this.state.questionsLeft <= 0 && (
-          <div>YOU ARE OUT OF QUESTIONS. PLEASE PICK WHO TO BLACKMAIL</div>
-        )}
+        <div className="bottom">
 
-        <div>Number of questions left: {this.state.questionsLeft}</div>
+          <div className="gameState">
+            <div>Number of questions left: {this.state.questionsLeft}</div>
 
-        {this.state.currentlyQuestioningName && (
-          <Questioning juror={this.currentlyQuestioningJuror()} answerQuestionCallback={this.answerQuestionCallback} />
-        )}
+            {this.state.questionsLeft <= 0 && (
+              <div>YOU ARE OUT OF QUESTIONS. PLEASE PICK WHO TO BLACKMAIL</div>
+            )}
 
-        <Blackmail
-        blackmailing={this.state.blackmailed}
-        />
+            <Blackmail
+            blackmailing={this.state.blackmailed}
+            />
+          </div>
+
+          <div className="jurorCard">
+            {this.state.currentlyQuestioningName && (
+              <Questioning juror={this.currentlyQuestioningJuror()} answerQuestionCallback={this.answerQuestionCallback} />
+            )}
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,0 +1,25 @@
+.root {
+  text-align: left;
+}
+
+.flex {
+  display: flex;
+  margin-top: 10px;
+}
+
+.question {
+  list-style: none;
+}
+
+.answer {
+  background-color: lightgreen;
+}
+
+.questions {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 2px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}

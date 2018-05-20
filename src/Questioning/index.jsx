@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './styles.css';
+import './questioning.css';
 
 class Questioning extends Component {
   constructor(props) {
@@ -25,17 +25,23 @@ class Questioning extends Component {
 
   render() {
     return (
-      <div>
+      <div className="root">
         <div>You are questioning {this.props.juror.name}</div>
-        <ol className={styles.questions}>
+
+        <div className="flex">
+          <div>Juror Img</div>
+
+          <ol className="questions">
           {this.state.questions.map((question, i) => (
             <li key={`question-${i}`} className="question"
-              onClick={()=> this.props.answerQuestionCallback(question, this.props.juror)}>
-              <div>{question.text}</div>
-              <div className={styles.answer}>{this.answerText(question)}</div>
+            onClick={()=> this.props.answerQuestionCallback(question, this.props.juror)}>
+            <div>{question.text}</div>
+            <div className="answer">{this.answerText(question)}</div>
             </li>
           ))}
-        </ol>
+          </ol>
+        </div>
+
       </div>
     );
   }
