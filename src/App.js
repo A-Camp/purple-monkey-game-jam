@@ -4,6 +4,7 @@ import Jurors from './Jurors'
 import Questioning from './Questioning'
 import Blackmail from './Blackmail'
 import { jurorData } from './jurorData.js'
+import Modal from 'react-modal';
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +26,23 @@ class App extends Component {
       jurors: jurorData,
       blackmails: blackmails,
       questions: questions,
+      startModalIsOpen: true,
+      gameEndModalIsOpen: false,
+      endText: "",
     };
+  }
+
+  closeModal = () => {
+    this.setState({startModalIsOpen: false});
+  }
+
+  openGameEndModal = (text) => {
+    this.setState({ endText: text })
+    this.setState({gameEndModalIsOpen: true});
+  }
+
+  newGame = () => {
+    window.location.reload();
   }
 
   selectBlackmail = (jurors, blackmailCount) => {
@@ -49,9 +66,9 @@ class App extends Component {
       let a = this.state.blackmails.map((bm) => {return bm.jurorName}).sort()
       let b = blackmailed.map((bm) => {return bm.name}).sort()
       if (JSON.stringify(a) === JSON.stringify(b)) {
-        alert("Not Guilty! You should probably be ashamed of yourself, but you earned a sweet pay day.")
+        this.openGameEndModal("Not Guilty! You should probably be ashamed of yourself, but you earned a sweet pay day.")
       } else {
-        alert("Guilty! Not only is your client getting locked up, you're gunna have to find a defense attorney yourself for those blackmail charges.")
+        this.openGameEndModal("Guilty! Not only is your client getting locked up, you're gunna have to find a defense attorney yourself for those blackmail charges.")
       }
     }
   }
@@ -88,14 +105,32 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <p>
-          Well, it's hopeless. Your client is definitely going to be found guilty. However, as a great defense attorney, you've never let a little thing like evidence get in your way.
-          Lucky for you, your client isn't the only scumbag in the courtroom. You've gotten the dirt on several jurors and you're going to blackmail your way into a "not guilty" verdict.
-          Unfortunately for you, you don't know which juror each incriminating fact belongs to.
-        </p>
-        <p>
-          You can read the intel you've gathered and then question each juror to figure out whose dirty deeds you can use to your client's advantage. Once you think you know who to blackmail, start throwing out accusations. Now get in there and rig that jury!
-        </p>
+
+        <Modal
+        isOpen={this.state.startModalIsOpen}
+        className="startModal"
+        >
+          <p className="startText">
+            Well, it's hopeless. Your client is definitely going to be found guilty. However, as a great defense attorney, you've never let a little thing like evidence get in your way.
+            Lucky for you, your client isn't the only scumbag in the courtroom. You've gotten the dirt on several jurors and you're going to blackmail your way into a "not guilty" verdict.
+            Unfortunately for you, you don't know which juror each incriminating fact belongs to.
+          </p>
+          <p className="startText">
+            You can read the intel you've gathered and then question each juror to figure out whose dirty deeds you can use to your client's advantage. Once you think you know who to blackmail, start throwing out accusations. Now get in there and rig that jury!
+          </p>
+          <button onClick={this.closeModal} className="button">START</button>
+        </Modal>
+
+        <Modal
+        isOpen={this.state.gameEndModalIsOpen}
+        className="startModal"
+        >
+          <p className="startText">
+            {this.state.endText}
+          </p>
+          <button onClick={this.newGame} className="button">NEW Game</button>
+        </Modal>
+
         <Jurors
         wasBlackmailedCallback={this.wasBlackmailedCallback}
         questioningCallback={this.questioningCallback}
