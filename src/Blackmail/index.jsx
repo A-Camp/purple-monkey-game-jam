@@ -28,10 +28,10 @@ class Blackmail extends Component {
           <div className="yourBlackmails">
             <div>{text.blackmails}</div>
             <div>
-            {this.props.blackmailing.map((juror, i) => (
+            {this.props.blackmailing.map((accusation, i) => (
               <div key={`accused-${i}`}>
-                <span>{juror.name}</span>
-                <button onClick={()=> this.props.removeBlackmailAccusation(juror)}>X</button>
+                <span>{accusation.juror.name}</span>
+                <button onClick={()=> this.props.removeBlackmailAccusation(accusation)}>X</button>
               </div>
             ))}
             </div>

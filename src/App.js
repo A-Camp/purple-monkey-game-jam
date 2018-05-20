@@ -73,10 +73,17 @@ class App extends Component {
   }
 
   checkWin = () => {
-    let blackmails = this.state.blackmails
-    let a = this.state.blackmails.map((bm) => {return bm.jurorName}).sort()
-    let b = this.state.blackmailed.map((bm) => {return bm.name}).sort()
-    if (JSON.stringify(a) === JSON.stringify(b)) {
+    let winner = true;
+
+    this.state.blackmailed.forEach(accusation => {
+      console.log(accusation.juror.name)
+      console.log(accusation.blackmail.jurorName)
+      if (!(accusation.juror.name === accusation.blackmail.jurorName)) {
+        winner = false
+      }
+    })
+
+    if (winner) {
       this.openGameEndModal("Not Guilty! You should probably be ashamed of yourself, but you earned a sweet pay day.")
     } else {
       this.openGameEndModal("Guilty! Not only is your client getting locked up, you're gunna have to find a defense attorney yourself for those blackmail charges.")
@@ -96,8 +103,8 @@ class App extends Component {
     return blackmails;
   }
 
-  wasBlackmailedCallback = juror => {
-    let blackmailed = [...this.state.blackmailed, juror]
+  wasBlackmailedCallback = accusation => {
+    let blackmailed = [...this.state.blackmailed, accusation]
     this.setState({ blackmailed: blackmailed})
   }
 
@@ -130,7 +137,7 @@ class App extends Component {
     this.setState({blackmailed: blackmailed});
   }
 
-  currentlyQuestioningJuror = ()=> {
+  currentlyQuestioningJuror = () => {
     if (this.state.currentlyQuestioningName) {
       return this.state.jurors.filter(juror => {
         return juror.name === this.state.currentlyQuestioningName
@@ -180,6 +187,7 @@ class App extends Component {
       blackmailed={this.state.blackmailed}
       blackmailsLeft={this.state.blackmailsLeft}
       jurors={this.state.jurors}
+      blackmailReasons={this.state.blackmails}
       />
 
       <div className="bottom">

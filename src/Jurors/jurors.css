@@ -12,6 +12,18 @@ h2 {
   margin: 1px 0;
 }
 
+.clickableBlackmail {
+  border: 1px solid red;
+  padding: 2px 0;
+}
+
+.nonClickableBlackmail {
+  border: 1px solid red;
+  padding: 2px 0;
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
 .jurors {
   display: flex;
   flex-wrap: wrap;
