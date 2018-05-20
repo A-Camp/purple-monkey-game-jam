@@ -7,6 +7,12 @@ import Blackmail from './Blackmail'
 class App extends Component {
   constructor(props) {
     super(props)
+    const questions = [
+      {number: 1, text: "What do you do for a living?"},
+      {number: 2, text: "Do you have any college education or training?"},
+      {number: 3, text: "Do you have any notable debts?"},
+      {number: 4, text: "What is your relationship status?"}
+    ]
     const jurors = [
       {
         "name": "Squilliam Fancyson", "answeredQuestions": [],
@@ -171,7 +177,8 @@ class App extends Component {
       questionsLeft: 20,
       currentlyQuestioning: null,
       jurors: jurors,
-      blackmails: blackmails
+      blackmails: blackmails,
+      questions: questions
     };
   }
 
@@ -261,12 +268,15 @@ class App extends Component {
 
             <Blackmail
             blackmailing={this.state.blackmailed}
+            blackmails={this.state.blackmails}
             />
           </div>
 
           <div className="jurorCard">
             {this.state.currentlyQuestioningName && (
-              <Questioning juror={this.currentlyQuestioningJuror()} answerQuestionCallback={this.answerQuestionCallback} />
+              <Questioning juror={this.currentlyQuestioningJuror()}
+              answerQuestionCallback={this.answerQuestionCallback}
+              questions={this.state.questions}/>
             )}
           </div>
         </div>
