@@ -17,15 +17,15 @@ class Blackmail extends Component {
 
     return (
       <div className="root">
-        <div>
-        <p>Your blackmail clues are</p>
+        <div className="clues">
+          <p className="blackmailHeader">BLACKMAIL</p>
+          {this.props.blackmails.map((blackmail, i) => (
+            <p key={`blackmail-number-${i}`}>• {blackmail.text}</p>
+          ))}
         </div>
-        {this.props.blackmails.map((blackmail, i) => (
-          <div key={`blackmail-number-${i}`}>{blackmail.text}</div>
-        ))}
 
         {this.props.blackmailing.length > 0 && (
-          <div>
+          <div className="yourBlackmails">
             <div>{text.blackmails}</div>
             <div>
             {this.props.blackmailing.map((juror, i) => (
@@ -36,7 +36,7 @@ class Blackmail extends Component {
         )}
 
         {this.props.blackmailing.length === 0 && (
-          <div>
+          <div className="yourBlackmails">
            <div>{text.noBlackmails}</div>
            </div>
         )}

@@ -1,12 +1,16 @@
 @font-face {
-    font-family: retroFont;
-    src: url('/Minecraft.TTF');
+  font-family: retroFont;
+  src: url('/lunchds.TTF');
 }
 
 .app {
   font-family: retroFont;
   font-weight: 200;
+  color: #FBFBF2;
+  letter-spacing: 2px;
   text-align: center;
+  width: 100%;
+  margin: 0;
 }
 
 .bottom {
@@ -14,14 +18,29 @@
   margin: 0 20px;
 }
 
+.numQuestions {
+  padding-top: 10px;
+}
+
+.noLowQuestions {
+  color: #FBFBF2;
+}
+
+.lowQuestions {
+  color: red;
+}
+
 .gameState {
   min-width: 300px;
   margin-right: 30px;
+  border: 1px solid black;
+  background-color: #40434E;
 }
 
 .jurorCard {
   width: 100%;
   border: 1px solid black;
+  background-color: #40434E;
 }
 
 .modal {
@@ -32,7 +51,7 @@
   height: auto;
   width: 50%;
   background-color: white;
-  border: 2px solid brown;
+  border: 2px solid #0C0300;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -40,6 +59,8 @@
   justify-content: center;
   font-family: retroFont;
   font-weight: 200;
+  padding-top: 10px;
+  background-color: #0C0300;
 }
 
 .modal:focus {
@@ -48,7 +69,12 @@
 
 .modalText {
   text-align: center;
-  padding: 0 10px;
+  padding: 5px 15px;
+  color: #FFD987;
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 100;
+  letter-spacing: 3px;
 }
 
 .button {

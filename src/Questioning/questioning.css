@@ -17,15 +17,16 @@
   min-width: 100px;
   min-height: 100px;
   margin-right: 5px;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 .answer {
-  background-color: lightgreen;
+  background-color: #0C0300;
 }
 
 .questions {
   width: 100%;
-  border: 1px solid black;
   border-radius: 2px;
   text-align: left;
   margin: 0;

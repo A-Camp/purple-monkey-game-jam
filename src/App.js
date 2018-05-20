@@ -94,12 +94,17 @@ class App extends Component {
     }
   }
 
-  currentlyQuestioningJuror = ()=> {
+  currentlyQuestioningJuror = () => {
     if (this.state.currentlyQuestioningName) {
       return this.state.jurors.filter(juror => {
         return juror.name === this.state.currentlyQuestioningName
       })[0]
     }
+  }
+
+  styleQuestions = () => {
+    console.log("styleQuestions")
+    return this.state.questionsLeft <= 5 ? "lowQuestions" : "noLowQuestions"
   }
 
   render() {
@@ -112,6 +117,8 @@ class App extends Component {
         >
           <p className="modalText">
             Well, it's hopeless. Your client is definitely going to be found guilty. However, as a great defense attorney, you've never let a little thing like evidence get in your way.
+          </p>
+          <p className="modalText">
             Lucky for you, your client isn't the only scumbag in the courtroom. You've gotten the dirt on several jurors and you're going to blackmail your way into a "not guilty" verdict.
             Unfortunately for you, you don't know which juror each incriminating fact belongs to.
           </p>
@@ -143,7 +150,7 @@ class App extends Component {
         <div className="bottom">
 
           <div className="gameState">
-            <div>Number of questions left: {this.state.questionsLeft}</div>
+            <div className="numQuestions">Number of questions left: <span className={this.styleQuestions()}>{this.state.questionsLeft}</span></div>
 
             {this.state.questionsLeft <= 0 && (
               <div>YOU ARE OUT OF QUESTIONS. PLEASE PICK WHO TO BLACKMAIL</div>
