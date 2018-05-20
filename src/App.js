@@ -26,14 +26,14 @@ class App extends Component {
       jurors: jurorData,
       blackmails: blackmails,
       questions: questions,
-      startModalIsOpen: true,
+      modalIsOpen: true,
       gameEndModalIsOpen: false,
       endText: "",
     };
   }
 
   closeModal = () => {
-    this.setState({startModalIsOpen: false});
+    this.setState({modalIsOpen: false});
   }
 
   openGameEndModal = (text) => {
@@ -107,15 +107,15 @@ class App extends Component {
       <div className="app">
 
         <Modal
-        isOpen={this.state.startModalIsOpen}
-        className="startModal"
+        isOpen={this.state.modalIsOpen}
+        className="modal"
         >
-          <p className="startText">
+          <p className="modalText">
             Well, it's hopeless. Your client is definitely going to be found guilty. However, as a great defense attorney, you've never let a little thing like evidence get in your way.
             Lucky for you, your client isn't the only scumbag in the courtroom. You've gotten the dirt on several jurors and you're going to blackmail your way into a "not guilty" verdict.
             Unfortunately for you, you don't know which juror each incriminating fact belongs to.
           </p>
-          <p className="startText">
+          <p className="modalText">
             You can read the intel you've gathered and then question each juror to figure out whose dirty deeds you can use to your client's advantage. Once you think you know who to blackmail, start throwing out accusations. Now get in there and rig that jury!
           </p>
           <button onClick={this.closeModal} className="button">START</button>
@@ -123,9 +123,9 @@ class App extends Component {
 
         <Modal
         isOpen={this.state.gameEndModalIsOpen}
-        className="startModal"
+        className="modal"
         >
-          <p className="startText">
+          <p className="modalText">
             {this.state.endText}
           </p>
           <button onClick={this.newGame} className="button">NEW Game</button>

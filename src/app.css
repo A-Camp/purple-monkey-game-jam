@@ -1,4 +1,11 @@
+@font-face {
+    font-family: retroFont;
+    src: url('/Minecraft.TTF');
+}
+
 .app {
+  font-family: retroFont;
+  font-weight: 200;
   text-align: center;
 }
 
@@ -17,7 +24,7 @@
   border: 1px solid black;
 }
 
-.startModal {
+.modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -31,13 +38,15 @@
   flex-direction: column;
   align-content: center;
   justify-content: center;
+  font-family: retroFont;
+  font-weight: 200;
 }
 
-.startModal:focus {
+.modal:focus {
   outline: none;
 }
 
-.startText {
+.modalText {
   text-align: center;
   padding: 0 10px;
 }
