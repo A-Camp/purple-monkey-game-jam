@@ -14,20 +14,26 @@
 }
 
 .jurorPic {
-  min-width: 100px;
-  min-height: 100px;
-  margin-right: 5px;
+  min-width: 140px;
+  max-width: 140px;
+  min-height: 140px;
+  max-height: 140px;
+  padding: 1em;
 }
 
 .answer {
-  background-color: lightgreen;
+  padding: 1em;
+  display: block;
 }
 
 .questions {
   width: 100%;
-  border: 1px solid black;
   border-radius: 2px;
   text-align: left;
   margin: 0;
-  padding: 0;
+  padding: .5em;
+}
+
+.hiddenQuestion{
+  display: none;
 }
