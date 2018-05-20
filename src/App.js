@@ -22,7 +22,6 @@ class App extends Component {
     this.state = {
       blackmailed: [],
       blackmailsLeft: 3,
-      blackmails: [],
       questionsLeft: 20,
       currentlyQuestioning: null,
       jurors: jurorsWithPics,
