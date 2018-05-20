@@ -1,4 +1,8 @@
-[
+import 
+
+
+
+export const jurorData = [
   {
     "name": "Squilliam Fancyson", "answeredQuestions": [],
     "answers": [
