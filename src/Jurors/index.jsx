@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import styles from './styles.css'
 
 class Jurors extends Component {
   fuckOff = (juror) => {

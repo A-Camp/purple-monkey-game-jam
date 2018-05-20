@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-import Jurors from './Jurors.jsx'
-import Questioning from './Questioning.js'
+import styles from './styles.css';
+import Jurors from './Jurors'
+import Questioning from './Questioning'
+import Blackmail from './Blackmail'
 
 class App extends Component {
   constructor(props) {
@@ -118,36 +119,36 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <p>
-        Well, it's hopeless. Your client is definitely going to be found guilty. However, as a great defense attorney, you've never let a little thing like evidence get in your way.
-        Lucky for you, your client isn't the only scumbag in the courtroom. You've gotten the dirt on several jurors and you're going to blackmail your way into a "not guilty" verdict.
-        Unfortunately for you, you don't know which juror each incriminating fact belongs to.
-      </p>
-      <p>
-        You can read the intel you've gathered and then question each juror to figure out whose dirty deeds you can use to your client's advantage. Once you think you know who to blackmail, start throwing out accusations. Now get in there and rig that jury!
-      </p>
+        <p>
+          Well, it's hopeless. Your client is definitely going to be found guilty. However, as a great defense attorney, you've never let a little thing like evidence get in your way.
+          Lucky for you, your client isn't the only scumbag in the courtroom. You've gotten the dirt on several jurors and you're going to blackmail your way into a "not guilty" verdict.
+          Unfortunately for you, you don't know which juror each incriminating fact belongs to.
+        </p>
+        <p>
+          You can read the intel you've gathered and then question each juror to figure out whose dirty deeds you can use to your client's advantage. Once you think you know who to blackmail, start throwing out accusations. Now get in there and rig that jury!
+        </p>
+        <Jurors
+        wasBlackmailedCallback={this.wasBlackmailedCallback}
+        questioningCallback={this.questioningCallback}
+        currentlyQuestioning={this.state.currentlyQuestioning}
+        blackmailed={this.state.blackmailed}
+        blackmailsLeft={this.state.blackmailsLeft}
+        jurors={this.state.jurors}
+        />
 
-      <Jurors
-      wasBlackmailedCallback={this.wasBlackmailedCallback}
-      questioningCallback={this.questioningCallback}
-      currentlyQuestioning={this.state.currentlyQuestioning}
-      blackmailed={this.state.blackmailed}
-      blackmailsLeft={this.state.blackmailsLeft}
-      jurors={this.state.jurors}
-      />
-      {this.state.questionsLeft === 0 && (
-        <div>YOU ARE OUT OF QUESTIONS. PLEASE PICK WHO TO BLACKMAIL</div>
-      )}
-      <div>Number of questions left: {this.state.questionsLeft}</div>
-      {this.state.currentlyQuestioningName && (
-        <Questioning juror={this.currentlyQuestioningJuror()} answerQuestionCallback={this.answerQuestionCallback} />
-      )}
-      <div>You want to blackmail:</div>
-      <div>
-      {this.state.blackmailed.map((juror, i) => (
-        <div key={`accused-${i}`}>{juror.name}</div>
-      ))}
-      </div>
+        {this.state.questionsLeft <= 0 && (
+          <div>YOU ARE OUT OF QUESTIONS. PLEASE PICK WHO TO BLACKMAIL</div>
+        )}
+
+        <div>Number of questions left: {this.state.questionsLeft}</div>
+
+        {this.state.currentlyQuestioningName && (
+          <Questioning juror={this.currentlyQuestioningJuror()} answerQuestionCallback={this.answerQuestionCallback} />
+        )}
+
+        <Blackmail
+        blackmailing={this.state.blackmailed}
+        />
       </div>
     );
   }
