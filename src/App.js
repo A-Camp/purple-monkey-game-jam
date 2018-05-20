@@ -223,7 +223,9 @@ class App extends Component {
           return j
         }
       })
-      this.setState({ jurors: newJurors, questionsLeft: this.state.questionsLeft - 1})
+      if (!juror.answeredQuestions.includes(question.number)) {
+        this.setState({ jurors: newJurors, questionsLeft: this.state.questionsLeft - 1})
+      }
     } else {
       alert("You are out of questions!")
     }
