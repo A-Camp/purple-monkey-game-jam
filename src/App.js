@@ -6,38 +6,86 @@ import Questioning from './Questioning.js'
 class App extends Component {
   constructor(props) {
     super(props)
+    let jurors = [
+      {name: "Squilliam Fancyson", answeredQuestions: [],
+        blackmailOptions: [
+          {number: 1, text: "has a butt"},
+          {number: 2, text: "doesn't have a butt"}
+        ],
+        answers: [
+          {number: 1, text: "She's my absolute fav!"},
+          {number: 2, text: "Only every episode!"}
+        ]
+      },
+      {name: "Mario Mario", answeredQuestions: [],
+        blackmailOptions: [
+          {number: 1, text: "dfbsdbfds"},
+          {number: 2, text: "sdfbdsfbsdb"}
+        ],
+        answers: [
+          {number: 1, text: "She's my absolute fav!"},
+          {number: 2, text: "Only every episode!"}
+        ]
+      },
+      {name: "Luigi Mario", answeredQuestions: [],
+        blackmailOptions: [
+          {number: 1, text: "dsfbsd"},
+          {number: 2, text: "sdfbbd"}
+        ],
+        answers: [
+          {number: 1, text: "She's my absolute fav!"},
+          {number: 2, text: "Only every episode!"}
+        ]
+      },
+      {name: "Teeth Teeth", answeredQuestions: [],
+        blackmailOptions: [
+          {number: 1, text: "ghgmhmghmg"},
+          {number: 2, text: "ghmghmgt"}
+        ],
+        answers: [
+          {number: 1, text: "She's my absolute fav!"},
+          {number: 2, text: "Only every episode!"}
+        ]
+      },
+    ]
+    let blackmails = this.selectBlackmail(jurors.slice(), 3);
     this.state = {
       blackmailed: [],
       blackmailsLeft: 3,
+      blackmails: [],
       questionsLeft: 20,
       currentlyQuestioning: null,
-      jurors: [
-        {name: "Squilliam Fancyson", answeredQuestions: [], answers: [
-          {number: 1, text: "She's my absolute fav!"},
-          {number: 2, text: "Only every episode!"}
-        ]},
-        {name: "Fucko Bucko", answeredQuestions: [], answers: [
-          {number: 1, text: "Who?"},
-          {number: 2, text: "What?"}
-        ]},
-        {name: "Paulina Smith", answeredQuestions: [], answers: [
-          {number: 1, text: "Who?"},
-          {number: 2, text: "What?"}
-        ]},
-        {name: "Mario Mario", answeredQuestions: [], answers: [
-          {number: 1, text: "Who?"},
-          {number: 2, text: "What?"}
-        ]},
-        {name: "Luigi Mario", answeredQuestions: [], answers: [
-          {number: 1, text: "Who?"},
-          {number: 2, text: "What?"}
-        ]}
-      ]
+      jurors: jurors,
+      blackmails: blackmails
     };
   }
 
+  selectBlackmail = (jurors, blackmailCount) => {
+    let blackmails = [];
+    for (let i=0; i < blackmailCount; i++) {
+      let jurorIndex = Math.floor(Math.random() * jurors.length)
+      let juror = jurors.splice(jurorIndex, 1)[0];
+      let blackmailOptionIndex = Math.floor(Math.random() * juror.blackmailOptions.length)
+      let blackmailOption = juror.blackmailOptions[blackmailOptionIndex]
+      blackmailOption["jurorName"] = juror.name
+      blackmails.push(juror.blackmailOptions[blackmailOptionIndex])
+    }
+    return blackmails;
+  }
+
   wasBlackmailedCallback = juror => {
-    this.setState({ blackmailed: [...this.state.blackmailed, juror]})
+    let blackmailed = [...this.state.blackmailed, juror]
+    this.setState({ blackmailed: blackmailed})
+    if (blackmailed.length === 3) {
+      let blackmails = this.state.blackmails
+      let a = this.state.blackmails.map((bm) => {return bm.jurorName}).sort()
+      let b = blackmailed.map((bm) => {return bm.name}).sort()
+      if (JSON.stringify(a) === JSON.stringify(b)) {
+        alert("Not Guilty! You should probably be ashamed of yourself, but you earned a sweet pay day.")
+      } else {
+        alert("Guilty! Not only is your client getting locked up, you're gunna have to find a defense attorney yourself for those blackmail charges.")
+      }
+    }
   }
 
   questioningCallback = (juror) => {
@@ -66,6 +114,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <p>
+          Well, it's hopeless. Your client is definitely going to be found guilty. However, as a great defense attorney, you've never let a little thing like evidence get in your way.
+          Lucky for you, your client isn't the only scumbag in the courtroom. You've gotten the dirt on several jurors and you're going to blackmail your way into a "not guilty" verdict.
+          Unfortunately for you, you don't know which juror each incriminating fact belongs to.
+        </p>
+        <p>
+          You can read the intel you've gathered and then question each juror to figure out whose dirty deeds you can use to your client's advantage. Once you think you know who to blackmail, start throwing out accusations. Now get in there and rig that jury!
+        </p>
         <Jurors
         wasBlackmailedCallback={this.wasBlackmailedCallback}
         questioningCallback={this.questioningCallback}
