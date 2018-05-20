@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-import Jurors from './Jurors.js'
-import Questioning from './Questioning.js'
+import './app.css';
+import Jurors from './Jurors'
+import Questioning from './Questioning'
+import Blackmail from './Blackmail'
 
 class App extends Component {
   constructor(props) {
@@ -93,14 +94,18 @@ class App extends Component {
   }
 
   answerQuestionCallback = (question, juror) => {
-    let newJurors = this.state.jurors.map(j => {
-      if (juror.name === j.name) {
-        return {...j, answeredQuestions: [...j.answeredQuestions, question.number]}
-      } else {
-        return j
-      }
-    })
-    this.setState({ jurors: newJurors, questionsLeft: this.state.questionsLeft - 1})
+    if (this.state.questionsLeft > 0) {
+      let newJurors = this.state.jurors.map(j => {
+        if (juror.name === j.name) {
+          return {...j, answeredQuestions: [...j.answeredQuestions, question.number]}
+        } else {
+          return j
+        }
+      })
+      this.setState({ jurors: newJurors, questionsLeft: this.state.questionsLeft - 1})
+    } else {
+      alert("You are out of questions!")
+    }
   }
 
   currentlyQuestioningJuror = ()=> {
@@ -113,7 +118,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <p>
           Well, it's hopeless. Your client is definitely going to be found guilty. However, as a great defense attorney, you've never let a little thing like evidence get in your way.
           Lucky for you, your client isn't the only scumbag in the courtroom. You've gotten the dirt on several jurors and you're going to blackmail your way into a "not guilty" verdict.
@@ -129,16 +134,27 @@ class App extends Component {
         blackmailed={this.state.blackmailed}
         blackmailsLeft={this.state.blackmailsLeft}
         jurors={this.state.jurors}
-         />
-        <div>Number of questions left: {this.state.questionsLeft}</div>
-        {this.state.currentlyQuestioningName && (
-          <Questioning juror={this.currentlyQuestioningJuror()} answerQuestionCallback={this.answerQuestionCallback} />
-        )}
-        <div>You want to blackmail:</div>
-        <div>
-          {this.state.blackmailed.map((juror, i) => (
-            <div key={`accused-${i}`}>{juror.name}</div>
-          ))}
+        />
+
+        <div className="bottom">
+
+          <div className="gameState">
+            <div>Number of questions left: {this.state.questionsLeft}</div>
+
+            {this.state.questionsLeft <= 0 && (
+              <div>YOU ARE OUT OF QUESTIONS. PLEASE PICK WHO TO BLACKMAIL</div>
+            )}
+
+            <Blackmail
+            blackmailing={this.state.blackmailed}
+            />
+          </div>
+
+          <div className="jurorCard">
+            {this.state.currentlyQuestioningName && (
+              <Questioning juror={this.currentlyQuestioningJuror()} answerQuestionCallback={this.answerQuestionCallback} />
+            )}
+          </div>
         </div>
       </div>
     );

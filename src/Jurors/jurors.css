@@ -1,0 +1,20 @@
+.jury-box {
+  margin: 0 20px 20px 20px;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: #754B36;
+  height: 300px;
+}
+
+.juror {
+  background-color: #996247;
+  border: 1px solid black;
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+}
+
+.jury-box img {
+  width: 100px;
+  height: 100px;
+}
