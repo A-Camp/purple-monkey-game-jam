@@ -8,6 +8,12 @@ import { jurorData } from './jurorData.js'
 class App extends Component {
   constructor(props) {
     super(props)
+    const questions = [
+      {number: 1, text: "What do you do for a living?"},
+      {number: 2, text: "What education or training do you have?"},
+      {number: 3, text: "Do you have any major sources of debt?"},
+      {number: 4, text: "What is your relationship status?"}
+    ]
 
     let blackmails = this.selectBlackmail(jurorData.slice(), 3);
     this.state = {
@@ -18,7 +24,7 @@ class App extends Component {
       currentlyQuestioning: null,
       jurors: jurorData,
       blackmails: blackmails,
-      questions: questions
+      questions: questions,
     };
   }
 
