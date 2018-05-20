@@ -59,6 +59,9 @@ class App extends Component {
   closeModal = () => {
     var audio = new Audio('/distortedLawNOrder.mp3');
     audio.play();
+    var audio = new Audio('/Law-And-Order-Theme-Song.wav');
+    audio.loop = true;
+    audio.play()
     this.setState({modalIsOpen: false});
   }
 
