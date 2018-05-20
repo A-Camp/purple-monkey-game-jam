@@ -19,14 +19,17 @@ class Jurors extends Component {
       <div>
         <div className="jury-box">
           <h2>Jury Box</h2>
+
+          <div className="jurors">
           {this.props.jurors.map((juror, i) => (
             <span key={`juror-${i}`} className="juror">
-              <img src="images/barney.png"/>
+              <img src={juror.picture}/>
               <div>{juror.name}</div>
               <div><button onClick={() => this.questionForMe(juror)}>Ask Questions</button></div>
               <div><button onClick={() => this.fuckOff(juror)}>Blackmail!</button></div>
             </span>
           ))}
+          </div>
         </div>
       </div>
     );
