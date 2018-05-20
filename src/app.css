@@ -15,6 +15,7 @@
 
 button {
   background-color: lightblue;
+  font-family: retroFont;
 }
 
 .bottom {
@@ -27,7 +28,7 @@ button {
 }
 
 .noLowQuestions {
-  color: #FBFBF2;
+  color: #40434E;
 }
 
 .lowQuestions {
@@ -40,6 +41,7 @@ button {
   border: 10px double black;
   color: #40434E;
   background-color: #FBFBF2;
+  height: 300px;
 }
 
 .jurorCard {
@@ -47,6 +49,8 @@ button {
   border: 10px double black;
   color: #40434E;
   background-color: #FBFBF2;
+  height: 300px;
+  overflow-y: scroll;
 }
 
 .modal {

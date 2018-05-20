@@ -88,8 +88,8 @@ class Jurors extends Component {
       <div className="jurors">
       {this.props.jurors.map((juror, i) => (
         <span key={`juror-${i}`} className="juror">
-        <img src={juror.picture} className="jurorPic"/>
-        <div>{juror.name}</div>
+        <img src={juror.picture}/>
+        <div className="juror-name">{juror.name}</div>
         <div className="jurorButton"><button onClick={() => this.questionForMe(juror)}>Question</button></div>
         <div className="jurorButton"><button onClick={() => this.startAccuse(juror)}>Blackmail</button></div>
         </span>

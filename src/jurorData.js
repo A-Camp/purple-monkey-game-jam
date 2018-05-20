@@ -10,7 +10,8 @@ export const jurorData = [
     "blackmailOptions": [
       {"number": 1, "text": "Disappeared with investor cash after starting a failed blockchain-based pet grooming business."},
       {"number": 2, "text": "Bought over 100 extreme experimental massages for his dog with stolen credit cards."}
-    ]
+    ],
+    "picture": '/images/juror-1.png',
   },
   {
     "name": "A Big Van", "answeredQuestions": [],
@@ -23,7 +24,8 @@ export const jurorData = [
     "blackmailOptions": [
       {"number": 1, "text": "Filed his “Magical Girl Aoi” body pillow as a wife and legal dependent on his taxes."},
       {"number": 2, "text": "Killed their mother by incorrectly preparing fugu fish."}
-    ]
+    ],
+    "picture": '/images/juror-2.png',
   },
   {
     "name": "Paulina Smith", "answeredQuestions": [],
@@ -36,7 +38,8 @@ export const jurorData = [
     "blackmailOptions": [
       {"number": 1, "text": "You have pictures of them doing an erotic photoshoot with the US constitution."},
       {"number": 2, "text": "Widdles artisanal bon bon spoons from Federally protected trees."}
-    ]
+    ],
+    "picture": '/images/juror-3.png',
   },
   {"name": "Mario Mario", "answeredQuestions": [],
     "answers": [
@@ -46,9 +49,10 @@ export const jurorData = [
       {"number": 4, "text": "I'm currently single, but hopeful. I know I won’t die and crazy cat lady."}
     ],
     "blackmailOptions": [
-      {"number": 1, "text": "Once killed someone allergic to cats by knitting them a sweater made with cat-hair."},
+      {"number": 1, "text": "Once sold a roll of cheap linen as authentic Irish Linen from the Victorian era."},
       {"number": 2, "text": "Literally, steals clothes off the backs of senile elderly."}
-    ]
+    ],
+    "picture": '/images/juror-4.png',
   },
   {
     "name": "Ezekial Ol' Corncob Calhoun", "answeredQuestions": [],
@@ -59,9 +63,10 @@ export const jurorData = [
       {"number": 4, "text": "I'm in a committed relationship with all of my wonderful subscribers."}
     ],
     "blackmailOptions": [
-      {"number": 1, "text": "Spends eight hours a day reporting DMCA violations on elementary schoolers blogs."},
+      {"number": 1, "text": "Spends eight hours a day reporting DMCA violations on middle school twitter accounts."},
       {"number": 2, "text": "Writes and sells social media botnets - uses them to perform DDOS attacks."}
-    ]
+    ],
+    "picture": '/images/juror-5.png',
   },
   {
     "name": "Atreyu Moonchild", "answeredQuestions": [],
@@ -74,7 +79,8 @@ export const jurorData = [
     "blackmailOptions": [
       {"number": 1, "text": "Is legally married at least twice under different names."},
       {"number": 2, "text": "Sells visas by marrying anyone who wants to come to America."}
-    ]
+    ],
+    "picture": '/images/juror-6.png',
   },
   {"name": "Mr. Jazz Hands", "answeredQuestions": [],
     "answers": [
@@ -84,13 +90,14 @@ export const jurorData = [
       {"number": 4, "text": "Oh, I used to be very in love with one of my old tutors, a wise and talented musician with years of experience. He’s gone now though - and I’ve sworn to myself that I shall never love again."}
     ],
     "blackmailOptions": [
-      {"number": 1, "text": "The secret to their success is that they kill cats and harvest their intestines."},
+      {"number": 1, "text": "The secret to their amazing sound is strings actual made from actual cat gut."},
       {"number": 2, "text": "Murdered the person who had their current job so that the old git would just die already and they could finally get promoted."}
-    ]
+    ],
+    "picture": '/images/juror-7.png',
   },
   {"name": "Strange Inspecific Person", "answeredQuestions": [],
     "answers": [
-      {"number": 1, "text": "I give people confidence to face the world. I revitalize relationships and careers. There’s no one I can’t help."},
+      {"number": 1, "text": "Appearance is more important than for people. I don’t think think of myself as a plastic surgeon, more like a therapist. I revitalize relationships and careers. I give people confidence to face the world, only instead of a crackpot breathing exercises, I give my patients something  tangible, in some cases very tangible. Do you want my card?"},
       {"number": 2, "text": "I have extensive qualifications from respected institutions of higher learning."},
       {"number": 3, "text": "I did once, but extensive college debt is very common in my field."},
       {"number": 4, "text": "Several failed marriages, but I meet many wonderful people in my line or work."}
@@ -98,12 +105,13 @@ export const jurorData = [
     "blackmailOptions": [
       {"number": 1, "text": "Uses cheap yak hair in patients’ plugs."},
       {"number": 2, "text": "Paid themselves from burn victim charity funds to perform breast implants."}
-    ]
+    ],
+    "picture": '/images/juror-8.png',
   },
   {
     "name": "Sherman Phelps", "answeredQuestions": [],
     "answers": [
-      {"number": 1, "text": "I own and run a funeral home. I also own a series of assisted living facilities."},
+      {"number": 1, "text": "I own and run a funeral home. I also own a series of assisted living facilities. That’s synergy."},
       {"number": 2, "text": "I have a bachelors in mortuary science. I apprenticed for several years at a respected funeral home."},
       {"number": 3, "text": "Nope. Business is booming. Especially since more clients are choosing cremations, which I do on site. No burial arrangements required."},
       {"number": 4, "text": "A beautiful partner, three lively teenagers. Almost too lively."}
@@ -111,7 +119,8 @@ export const jurorData = [
     "blackmailOptions": [
       {"number": 1, "text": "Their children took a variety of offensive photos with 'clients.'"},
       {"number": 2, "text": "A tad thrifty with the furnace bill, some family members of clients would be not be pleased with the results."}
-    ]
+    ],
+    "picture": '/images/juror-9.png',
   },
   {
     "name": "Hammer Tim", "answeredQuestions": [],
@@ -124,7 +133,8 @@ export const jurorData = [
     "blackmailOptions": [
       {"number": 1, "text": "Ate dolphin meat in St. Vincent. Keeping it from their boss."},
       {"number": 2, "text": "Personally clubbed a baby seal cub and turned it into a fur hat."}
-    ]
+    ],
+    "picture": '/images/juror-10.png',
   },
   {
     "name": "Krang", "answeredQuestions": [],
@@ -137,7 +147,8 @@ export const jurorData = [
     "blackmailOptions": [
       {"number": 1, "text": "Having an affair with another respected member of the community."},
       {"number": 2, "text": "Embezzled money from a missionary fund."}
-    ]
+    ],
+    "picture": '/images/juror-11.png',
   },
   {
     "name": "Popular Music", "answeredQuestions": [],
@@ -150,6 +161,7 @@ export const jurorData = [
     "blackmailOptions": [
       {"number": 1, "text": "Bought several organs off the black market to cut costs."},
       {"number": 2, "text": "Left academia after embarrassing breach of procedure in several studies."}
-    ]
+    ],
+    "picture": '/images/juror-12.png',
   }
 ]
