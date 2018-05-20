@@ -29,9 +29,15 @@ class Blackmail extends Component {
             <div>{text.blackmails}</div>
             <div>
             {this.props.blackmailing.map((juror, i) => (
-              <div key={`accused-${i}`}>{juror.name}</div>
+              <div key={`accused-${i}`}>
+                <span>{juror.name}</span>
+                <button onClick={()=> this.props.removeBlackmailAccusation(juror)}>X</button>
+              </div>
             ))}
             </div>
+            {this.props.blackmailing.length === 3 && (
+              <button onClick={() => this.props.checkWin()}>Submit Blackmail</button>
+            )}
           </div>
         )}
 

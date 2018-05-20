@@ -45,6 +45,17 @@ class App extends Component {
     window.location.reload();
   }
 
+  checkWin = () => {
+    let blackmails = this.state.blackmails
+    let a = this.state.blackmails.map((bm) => {return bm.jurorName}).sort()
+    let b = this.state.blackmailed.map((bm) => {return bm.name}).sort()
+    if (JSON.stringify(a) === JSON.stringify(b)) {
+      this.openGameEndModal("Not Guilty! You should probably be ashamed of yourself, but you earned a sweet pay day.")
+    } else {
+      this.openGameEndModal("Guilty! Not only is your client getting locked up, you're gunna have to find a defense attorney yourself for those blackmail charges.")
+    }
+  }
+
   selectBlackmail = (jurors, blackmailCount) => {
     let blackmails = [];
     for (let i=0; i < blackmailCount; i++) {
@@ -61,16 +72,6 @@ class App extends Component {
   wasBlackmailedCallback = juror => {
     let blackmailed = [...this.state.blackmailed, juror]
     this.setState({ blackmailed: blackmailed})
-    if (blackmailed.length === 3) {
-      let blackmails = this.state.blackmails
-      let a = this.state.blackmails.map((bm) => {return bm.jurorName}).sort()
-      let b = blackmailed.map((bm) => {return bm.name}).sort()
-      if (JSON.stringify(a) === JSON.stringify(b)) {
-        this.openGameEndModal("Not Guilty! You should probably be ashamed of yourself, but you earned a sweet pay day.")
-      } else {
-        this.openGameEndModal("Guilty! Not only is your client getting locked up, you're gunna have to find a defense attorney yourself for those blackmail charges.")
-      }
-    }
   }
 
   questioningCallback = (juror) => {
@@ -94,7 +95,15 @@ class App extends Component {
     }
   }
 
-  currentlyQuestioningJuror = () => {
+  removeBlackmailAccusation = (juror) => {
+    let oldBlackmailed = this.state.blackmailed
+    let blackmailed = oldBlackmailed.filter(bm => {
+      return bm !== juror
+    })
+    this.setState({blackmailed: blackmailed});
+  }
+
+  currentlyQuestioningJuror = ()=> {
     if (this.state.currentlyQuestioningName) {
       return this.state.jurors.filter(juror => {
         return juror.name === this.state.currentlyQuestioningName
@@ -159,6 +168,8 @@ class App extends Component {
             <Blackmail
             blackmailing={this.state.blackmailed}
             blackmails={this.state.blackmails}
+            removeBlackmailAccusation={this.removeBlackmailAccusation}
+            checkWin={this.checkWin}
             />
           </div>
 
