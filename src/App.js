@@ -41,20 +41,26 @@ class App extends Component {
   }
 
   questioningCallback = (juror) => {
-    this.setState({ currentlyQuestioning: juror })
+    this.setState({ currentlyQuestioningName: juror.name })
   }
 
   answerQuestionCallback = (question, juror) => {
     let newJurors = this.state.jurors.map(j => {
       if (juror.name === j.name) {
-        let answeredQuestions = j.answeredQuestions + question.number
-        return {...j, answeredQuestions: [...j.answeredQuestions, answeredQuestions]}
+        return {...j, answeredQuestions: [...j.answeredQuestions, question.number]}
       } else {
         return j
       }
     })
-    console.log( newJurors )
-    this.setState({ jurors: newJurors})
+    this.setState({ jurors: newJurors, questionsLeft: this.state.questionsLeft - 1})
+  }
+
+  currentlyQuestioningJuror = ()=> {
+    if (this.state.currentlyQuestioningName) {
+      return this.state.jurors.filter(juror => {
+        return juror.name === this.state.currentlyQuestioningName
+      })[0]
+    }
   }
 
   render() {
@@ -69,8 +75,8 @@ class App extends Component {
         jurors={this.state.jurors}
          />
         <div>Number of questions left: {this.state.questionsLeft}</div>
-        {this.state.currentlyQuestioning && (
-          <Questioning juror={this.state.currentlyQuestioning} answerQuestionCallback={this.answerQuestionCallback} />
+        {this.state.currentlyQuestioningName && (
+          <Questioning juror={this.currentlyQuestioningJuror()} answerQuestionCallback={this.answerQuestionCallback} />
         )}
         <div>You want to blackmail:</div>
         <div>
