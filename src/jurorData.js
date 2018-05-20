@@ -4,8 +4,8 @@ export const jurorData = [
     "answers": [
       {"number": 1, "text": "I live for a living. I retired several years ago and spend my time hiking, surfing, helping the homeless, pet styling on the side."},
       {"number": 2, "text": "I started as a computer science major, but ended up graduating with a BA in Business and Marketing."},
-      {"number": 3, "text": "Single for now. Just me and Rufus - man’s best friend."},
-      {"number": 4, "text": ""}
+      {"number": 3, "text": "Not anymore I don't. In fact, I’ve really enjoyed living the good life the past couple years."},
+      {"number": 4, "text": "Single for now. Just me and Rufus - man’s best friend."}
     ],
     "blackmailOptions": [
       {"number": 1, "text": "Disappeared with investor cash after starting a failed blockchain-based pet grooming business."},
@@ -17,8 +17,8 @@ export const jurorData = [
     "name": "A Big Van", "answeredQuestions": [],
     "answers": [
       {"number": 1, "text": "I work part time in food services, specifically Japanese culinary arts."},
-      {"number": 2, "text": "I've got some debt from my DVD and action figure collections, but nothing too serious. Living in my parent’s basement is a choice. I don’t get along with roommates."},
-      {"number": 3, "text": "I majored in Japanese but ended up dropping out after 2 years. Western institutions tend to have very unenlightened views on learning styles."},
+      {"number": 2, "text": "I majored in Japanese but ended up dropping out after 2 years. Western institutions tend to have very unenlightened views on learning styles."},
+      {"number": 3, "text": "I've got some debt from my DVD and action figure collections, but nothing too serious. Living in my parent’s basement is a choice. I don’t get along with roommates."},
       {"number": 4, "text": "It's...complicated. Ever notice how bigoted people can be? Like “2d dimensional” is a slur for superficial people? I can say for sure the only superficial people I’ve ever met were all very much in the third dimension."}
     ],
     "blackmailOptions": [

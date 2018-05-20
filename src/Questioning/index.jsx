@@ -19,6 +19,7 @@ class Questioning extends Component {
         <div>You are questioning {this.props.juror.name}</div>
 
         <div className="flex">
+          <img src={this.props.juror.picture} className="jurorPic"/>
           <ol className="questions">
           {this.props.questions.map((question, i) => (
             <li key={`question-${i}`} className="question"
